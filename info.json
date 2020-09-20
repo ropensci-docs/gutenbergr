@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "9fad14e35d0012ab162363d16453e61770516abb",
+    "author": "David Robinson <admiral.david@gmail.com>",
+    "time": "2020-09-20 23:14:16",
+    "files": 9,
+    "merge": false,
+    "message": "Changes preparing for CRAN release\n\nAdded cran-comments and NEWS.md\n\nReverted version that was prematurely set to 0.2.0 for GitHub.\n\nVarious spelling and link fixes\n\nRemoved a print statement left over\n"
+  },
+  "remote": "https://github.com/ropensci/gutenbergr",
+  "pkg": "gutenbergr"
+}

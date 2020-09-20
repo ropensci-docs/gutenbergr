@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/index.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_authors.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_get_mirror.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_metadata.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_strip.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_subjects.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/gutenberg_works.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/reference/read_zip_url.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/gutenbergr/articles/intro.html</loc>
+  </url>
+</urlset>
