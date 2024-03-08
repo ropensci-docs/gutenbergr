@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "96cf4f5d06b3106d32f6720ac32172540f4cd65f",
+    "author": "Jon Harmon <jonthegeek@gmail.com>",
+    "time": "2023-12-09 04:05:22",
+    "files": 9,
+    "merge": false,
+    "message": "Better has_text (#51)\n\n* Update metadata.\r\n\r\nFix error where some text data is not treated as text.\r\n\r\n* Switch maintainer.\r\n\r\nAnd tidy the description.\r\n\r\n* Remove extraneous ggplot2 Suggest.\r\n\r\n* Make sure all rows of data are distinct.\r\n\r\n* Updates for R CMD Check"
+  },
+  "repo": "https://github.com/ropensci/gutenbergr",
+  "pkg": "gutenbergr"
+}
