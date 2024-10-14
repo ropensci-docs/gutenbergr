@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "c946d59bfa0f2513e1e14c40eadb35bfe49c362d",
+    "author": "Jordan Bradford <36420801+jrdnbradford@users.noreply.github.com>",
+    "time": "2024-10-14 13:14:43",
+    "files": 5,
+    "merge": false,
+    "message": "File per export (#81)\n\n* Document `gutenberg_add_metadata`\r\n\r\n* Restructure exports/test (#67)"
+  },
+  "repo": "https://github.com/ropensci/gutenbergr",
+  "pkg": "gutenbergr"
+}
