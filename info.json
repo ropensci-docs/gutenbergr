@@ -1,0 +1,13 @@
+{
+  "commit": {
+    "commit": "e1f938791df1855541987e5391c40036af1235d3",
+    "author": "Jordan Bradford <36420801+jrdnbradford@users.noreply.github.com>",
+    "time": "2026-08-08T22:53:23Z",
+    "files": 5,
+    "merge": true,
+    "message": "Merge pull request #158 from ropensci/gha-checkout-bump"
+  },
+  "repo": "https://github.com/ropensci/gutenbergr",
+  "pkg": "gutenbergr",
+  "time": "2026-09-07T09:23:15Z"
+}

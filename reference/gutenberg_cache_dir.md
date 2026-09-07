@@ -1,0 +1,39 @@
+# Get the active cache directory path
+
+Calculates the path to the directory where Gutenberg files are stored,
+based on the current `gutenbergr_cache_type` and
+`gutenbergr_base_cache_dir` options.
+
+## Usage
+
+``` r
+gutenberg_cache_dir()
+```
+
+## Value
+
+A character string representing the path to the cache directory.
+
+## Cache options
+
+The following options control caching behavior:
+
+- `gutenbergr_cache_type`: Character string indicating how downloaded
+  works are cached. Must be either `"session"` (default) or
+  `"persistent"`.
+
+- `gutenbergr_base_cache_dir`: Base directory used for persistent
+  caching when `gutenbergr_cache_type = "persistent"`.
+
+  By default, this is an OS-specific cache directory determined by
+  `tools::R_user_dir("gutenbergr", "cache")`. Advanced users may set
+  this to a custom path.
+
+## Examples
+
+``` r
+if (FALSE) { # interactive()
+# Get current cache directory
+gutenberg_cache_dir()
+}
+```

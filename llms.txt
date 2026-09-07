@@ -1,0 +1,215 @@
+# gutenbergr
+
+Search, download, and process public domain texts from the [Project
+Gutenberg](https://www.gutenberg.org/) collection.
+
+## Installation
+
+Install the released version from [CRAN](https://cran.r-project.org/):
+
+``` r
+
+install.packages("gutenbergr")
+```
+
+## Quick Start
+
+Load the package and any other required libraries:
+
+``` r
+
+library(gutenbergr)
+library(dplyr)
+```
+
+We’ll get and set our Project Gutenberg mirror:
+
+``` r
+
+gutenberg_get_mirror()
+```
+
+``` R
+#> [1] "https://gutenberg.pglaf.org"
+```
+
+Search through the metadata to find Jane Austen’s *Persuasion*:
+
+``` r
+
+gutenberg_works(title == "Persuasion")
+```
+
+``` R
+#> # A tibble: 1 × 8
+#>   gutenberg_id title      author       gutenberg_author_id language
+#>          <int> <chr>      <chr>                      <int> <fct>   
+#> 1          105 Persuasion Austen, Jane                  68 en      
+#>   gutenberg_bookshelf                           rights                    has_text
+#>   <chr>                                         <fct>                     <lgl>   
+#> 1 Category: Novels/Category: British Literature Public domain in the USA. TRUE
+```
+
+*Persuasion*’s `gutenberg_id` is 105. We’ll use this ID to download it
+and also set our cache option to `"persistent"` so that we don’t have to
+re-download it later.
+
+``` r
+
+options(gutenbergr_cache_type = "persistent")
+persuasion <- gutenberg_download(105)
+```
+
+``` r
+
+persuasion
+```
+
+``` R
+#> # A tibble: 8,357 × 2
+#>    gutenberg_id text            
+#>           <int> <chr>           
+#>  1          105 "Persuasion"    
+#>  2          105 ""              
+#>  3          105 ""              
+#>  4          105 "by Jane Austen"
+#>  5          105 ""              
+#>  6          105 "(1818)"        
+#>  7          105 ""              
+#>  8          105 ""              
+#>  9          105 ""              
+#> 10          105 ""              
+#> # ℹ 8,347 more rows
+```
+
+Multiple works can be downloaded at once. We’ll also download Edna
+St. Vincent Millay’s *Renascence and Other Poems* (`gutenberg_id` 161)
+and throw in `title` data from the metadata.
+
+``` r
+
+books <- gutenberg_download(c(105, 161), meta_fields = "title")
+```
+
+``` r
+
+books |> count(title)
+```
+
+``` R
+#> # A tibble: 2 × 2
+#>   title                           n
+#>   <chr>                       <int>
+#> 1 Persuasion                   8357
+#> 2 Renascence, and Other Poems  1222
+```
+
+## Vignettes
+
+See the following vignettes for more advanced usage of gutenbergr.
+
+- [Getting Started with
+  gutenbergr](https://docs.ropensci.org/gutenbergr/articles/intro.html) -
+  explore metadata and download books
+- [Text Mining with gutenbergr and
+  tidytext](https://docs.ropensci.org/gutenbergr/articles/text-mining.html) -
+  complete analysis workflow with
+  [tidytext](https://github.com/juliasilge/tidytext)
+
+## FAQ
+
+### How were the metadata files generated?
+
+See the
+[`data-raw`](https://github.com/ropensci/gutenbergr/tree/master/data-raw)
+directory for scripts. Metadata was generated from [the Project
+Gutenberg
+catalog](https://www.gutenberg.org/ebooks/offline_catalogs.html) on **25
+June 2026**.
+
+### Do you respect robot access rules?
+
+Yes! The package follows [Project Gutenberg’s
+rules](https://www.gutenberg.org/policy/robot_access.html):
+
+- Retrieves books directly from mirrors using the authorized link format
+- Prioritizes `.zip` files to minimize bandwidth
+- Supports session and persistent caching
+- This package is designed for downloading individual works or small
+  collections, not the entire corpus. For bulk downloads, [set up a
+  mirror](https://www.gutenberg.org/policy/robot_access.html).
+
+See their [Terms of
+Use](https://www.gutenberg.org/policy/terms_of_use.html) for details.
+
+## Contributing
+
+See
+[`CONTRIBUTING.md`](https://docs.ropensci.org/gutenbergr/CONTRIBUTING.html).
+
+Note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
+# Package index
+
+## Core Functions
+
+- [`gutenberg_download()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.md)
+  : Download one or more works using a Project Gutenberg ID
+- [`gutenberg_works()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_works.md)
+  : Get a filtered table of Gutenberg work metadata
+- [`gutenberg_strip()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_strip.md)
+  : Strip header and footer content from a Project Gutenberg book
+- [`gutenberg_add_sections()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_add_sections.md)
+  : Add a section column to a Gutenberg tibble
+
+## Cache Functions
+
+- [`gutenberg_cache_clear_all()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_cache_clear_all.md)
+  : Clear all files from the Gutenberg cache
+- [`gutenberg_cache_dir()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_cache_dir.md)
+  : Get the active cache directory path
+- [`gutenberg_cache_list()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_cache_list.md)
+  : List files in the Gutenberg cache
+- [`gutenberg_cache_remove_ids()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_cache_remove_ids.md)
+  : Delete specific files from the cache
+- [`gutenberg_cache_set()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_cache_set.md)
+  : Set the Gutenberg cache type
+
+## Mirror Functions
+
+- [`gutenberg_get_all_mirrors()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_get_all_mirrors.md)
+  : Get all mirror data from Project Gutenberg
+- [`gutenberg_get_mirror()`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_get_mirror.md)
+  : Get the recommended mirror for Gutenberg files
+
+## Data
+
+- [`gutenberg_authors`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_authors.md)
+  : Metadata about Project Gutenberg authors
+- [`gutenberg_languages`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_languages.md)
+  : Metadata about Project Gutenberg languages
+- [`gutenberg_metadata`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_metadata.md)
+  : Gutenberg metadata about each work
+- [`gutenberg_subjects`](https://docs.ropensci.org/gutenbergr/reference/gutenberg_subjects.md)
+  : Gutenberg metadata about the subject of each work
+- [`sample_books`](https://docs.ropensci.org/gutenbergr/reference/sample_books.md)
+  : Sample Book Downloads
+
+# Articles
+
+### Introduction to gutenbergr
+
+- [Getting Started with
+  gutenbergr](https://docs.ropensci.org/gutenbergr/articles/intro.md):
+
+  A simple introduction to the gutenbergr package
+
+### Text Mining with gutenbergr and tidytext
+
+- [Text Mining with gutenbergr and
+  tidytext](https://docs.ropensci.org/gutenbergr/articles/text-mining.md):
+
+  An introduction to text mining with tidytext and gutenbergr using Jane
+  Austen’s “Persuasion”
